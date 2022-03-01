@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+
+class Inputdecorations {
+
+  static InputDecoration authInputDecoration ({
+    required String hintText,
+    required String labelText, 
+    IconData? prefixIcon
+
+  }) {
+
+    return InputDecoration(
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.deepPurple
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.deepPurple,
+            width: 2.5
+          )
+        ),
+        hintText: hintText,
+        labelText: labelText,
+        labelStyle: TextStyle(
+          color: Colors.grey
+        ),
+        
+        //Ternario
+        prefixIcon: prefixIcon != null 
+          ? Icon(prefixIcon, color: Colors.deepPurple,)
+          : null
+    );
+  }
+
+}
