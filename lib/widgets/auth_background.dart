@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AuthBackground extends StatelessWidget {
-  const AuthBackground({Key? key}) : super(key: key);
+
+  final Widget child;
+
+  const AuthBackground({
+    Key? key, 
+    required this.child
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +15,11 @@ class AuthBackground extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Stack(
-        children: const [
-
-          _PurpleBox()
+        children: [
+          
+          _PurpleBox(),
+          _HeaderIcon(),
+          child,
 
         ],
       ),
@@ -19,7 +27,23 @@ class AuthBackground extends StatelessWidget {
   }
 }
 
-//Caja Azul
+class _HeaderIcon extends StatelessWidget {
+  const _HeaderIcon({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only( top: 30),
+        child: Icon(Icons.person_pin, color: Colors.white, size: 100,),
+      ),
+    );
+  }
+}
+
 class _PurpleBox extends StatelessWidget {
   const _PurpleBox({Key? key}) : super(key: key);
 

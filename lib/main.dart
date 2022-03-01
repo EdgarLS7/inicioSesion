@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: '/login',
       routes: {
-        '/login': ( _ ) => const LoginScreen(),
+        '/login': ( _ ) => LoginScreen(),
         '/home' : ( _ ) => const HomeScreen()
       },
       theme: ThemeData.light().copyWith(
