@@ -95,7 +95,7 @@ class _LoginForm extends StatelessWidget {
 
                 return (value != null && value.length >= 6) 
                 ? null
-                : 'La contraseña debe de ser de 6 caracteres';
+                : 'La contraseña debe debe tener 6 caracteres';
                 
               },
             ),
@@ -110,14 +110,28 @@ class _LoginForm extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric( horizontal: 70, vertical: 15),
                 child: Text(
-                  'Ingresar',
+                  loginForm.isLoading
+                    ? 'Espere'
+                    : 'Ingresar',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              onPressed: () {
-                if (!loginForm.isValidForm()) return;
+              onPressed: loginForm.isLoading ? null : () async {
+                
+                //Mostrar el teclado al "ingresar"
+                FocusScope.of(context).unfocus();
 
-                Navigator.pushReplacementNamed(context, '/home');
+                if (!loginForm.isValidForm()) return;
+                
+                //Cambiar a "espere"
+                loginForm.isLoading = true;
+
+                await Future.delayed(Duration(seconds: 2));
+
+                loginForm.isLoading = false;
+
+
+                //Navigator.pushReplacementNamed(context, '/home');
               },
             )
           ],
