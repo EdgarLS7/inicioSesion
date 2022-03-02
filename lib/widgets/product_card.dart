@@ -6,15 +6,15 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        margin: EdgeInsets.only( top: 30, bottom: 50),
+        margin: const EdgeInsets.only( top: 30, bottom: 50),
         width: double.infinity,
         height: 400,
         decoration: _cardBorders(),
         child: Stack(
           alignment: Alignment.bottomLeft,
-          children: [
+          children: const [
             _BackgroundImage(),
 
             _ProductDetails(),
@@ -58,7 +58,7 @@ class _NotAvailable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FittedBox(
+      child: const FittedBox(
         fit: BoxFit.contain,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
@@ -70,7 +70,7 @@ class _NotAvailable extends StatelessWidget {
       ),
       width: 105,
       height: 40,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.only( topLeft: Radius.circular(20), bottomRight: Radius.circular(20))
       ),
@@ -86,7 +86,7 @@ class _PriceTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FittedBox(
+      child: const FittedBox(
         fit: BoxFit.contain,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
@@ -97,7 +97,7 @@ class _PriceTag extends StatelessWidget {
       width: 100,
       height: 55,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.indigo,
         borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20))
       ),
@@ -117,7 +117,7 @@ class _BackgroundImage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 400,
-        child: FadeInImage(
+        child: const FadeInImage(
           placeholder: AssetImage('assets/jar-loading.gif'),
           image: NetworkImage('https://via.placeholder.com/400x300/f6f6f6'),
           fit: BoxFit.cover,
@@ -135,13 +135,13 @@ class _ProductDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only( right: 70),
+      padding: const EdgeInsets.only( right: 70),
       child: Container(
         width: double.infinity,
         height: 70,
-        decoration: _BuildBoxDecoration(),
+        decoration: _buildBoxDecoration(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
@@ -160,7 +160,7 @@ class _ProductDetails extends StatelessWidget {
     );
   }
 
-  BoxDecoration _BuildBoxDecoration() => BoxDecoration(
+  BoxDecoration _buildBoxDecoration() => const BoxDecoration(
     color: Colors.indigo,
     borderRadius: BorderRadius.only( bottomLeft: Radius.circular(20), topRight: Radius.circular(20))
   );
