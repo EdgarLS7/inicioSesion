@@ -44,17 +44,16 @@ class LoginScreen extends StatelessWidget {
 }
 
 class _LoginForm extends StatelessWidget {
-  const _LoginForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    final loginForm = Provider.of(context)<LoginFormProvider>(context);
+    final loginForm = Provider.of<LoginFormProvider>(context);
 
     return Container(
       child: Form(
 
-        // key: ,
+        key: loginForm.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
 
         child: Column(
@@ -67,6 +66,7 @@ class _LoginForm extends StatelessWidget {
                 labelText: 'Correo electronico',
                 prefixIcon: Icons.alternate_email_rounded
               ),
+              onChanged: ( value ) => loginForm.email = value,
               validator: ( value ) {
 
                 String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -90,9 +90,10 @@ class _LoginForm extends StatelessWidget {
                 labelText: 'Contraseña',
                 prefixIcon: Icons.lock_outline
               ),
+              onChanged: ( value ) => loginForm.password = value,
               validator: ( value ) {
 
-                return (value != null && value.length == 6) 
+                return (value != null && value.length >= 6) 
                 ? null
                 : 'La contraseña debe de ser de 6 caracteres';
                 
@@ -113,10 +114,12 @@ class _LoginForm extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              onPressed: () {},
-            
-            )
+              onPressed: () {
+                if (!loginForm.isValidForm()) return;
 
+                Navigator.pushReplacementNamed(context, '/home');
+              },
+            )
           ],
         ),
       ),
