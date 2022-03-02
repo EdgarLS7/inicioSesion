@@ -45,6 +45,9 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Form(
+
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+
         child: Column(
           children: [
             TextFormField(
@@ -55,6 +58,16 @@ class _LoginForm extends StatelessWidget {
                 labelText: 'Correo electronico',
                 prefixIcon: Icons.alternate_email_rounded
               ),
+              validator: ( value ) {
+
+                String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                RegExp regExp  = new RegExp(pattern);
+                
+                return regExp.hasMatch(value ?? '')
+                  ? null
+                  : 'El dato ingresado no es un Correo';
+
+              },
             ),
 
             SizedBox(height: 30,),
@@ -62,12 +75,19 @@ class _LoginForm extends StatelessWidget {
             TextFormField(
               autocorrect: false,
               obscureText: true,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               decoration: Inputdecorations.authInputDecoration(
                 hintText: '****',
                 labelText: 'Contraseña',
                 prefixIcon: Icons.lock_outline
               ),
+              validator: ( value ) {
+
+                return (value != null && value.length == 6) 
+                ? null
+                : 'La contraseña debe de ser de 6 caracteres';
+                
+              },
             ),
 
             SizedBox(height: 30,),
