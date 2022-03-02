@@ -15,14 +15,14 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView (
           child: Column(
             children: [
-              SizedBox( height: 235),
+              const SizedBox( height: 235),
               
               CardContainer(
                 child: Column(
                   children: [
                     // SizedBox(height: 10,),
                     Text('login', style: Theme.of(context).textTheme.headline4),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
 
                     ChangeNotifierProvider(
                       create: ( _ ) => LoginFormProvider(),
@@ -32,9 +32,10 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-              SizedBox( height:  50,),
-              Text('Crear una nueva cuenta', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold),),
-              SizedBox( height: 150,)
+              const SizedBox( height:  50,),
+              const Text('Crear una nueva cuenta', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold),),
+              
+              const SizedBox( height: 150,)
             ],
           ),
         )
@@ -70,7 +71,7 @@ class _LoginForm extends StatelessWidget {
               validator: ( value ) {
 
                 String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                RegExp regExp  = new RegExp(pattern);
+                RegExp regExp  = RegExp(pattern);
                 
                 return regExp.hasMatch(value ?? '')
                   ? null
@@ -79,7 +80,7 @@ class _LoginForm extends StatelessWidget {
               },
             ),
 
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
 
             TextFormField(
               autocorrect: false,
@@ -100,7 +101,7 @@ class _LoginForm extends StatelessWidget {
               },
             ),
 
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
 
             MaterialButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -108,12 +109,12 @@ class _LoginForm extends StatelessWidget {
               elevation: 0,
               color: Colors.deepPurple,
               child: Container(
-                padding: EdgeInsets.symmetric( horizontal: 70, vertical: 15),
+                padding: const EdgeInsets.symmetric( horizontal: 70, vertical: 15),
                 child: Text(
                   loginForm.isLoading
                     ? 'Espere'
                     : 'Ingresar',
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
               onPressed: loginForm.isLoading ? null : () async {
@@ -126,12 +127,11 @@ class _LoginForm extends StatelessWidget {
                 //Cambiar a "espere"
                 loginForm.isLoading = true;
 
-                await Future.delayed(Duration(seconds: 2));
+                await Future.delayed( const Duration(seconds: 2));
 
                 loginForm.isLoading = false;
 
-
-                //Navigator.pushReplacementNamed(context, '/home');
+                Navigator.pushReplacementNamed(context, '/home');
               },
             )
           ],
