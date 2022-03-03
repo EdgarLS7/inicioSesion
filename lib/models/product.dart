@@ -17,6 +17,7 @@ class Product {
   String name;
   String? picture;
   double price;
+  String? id;
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
@@ -26,7 +27,7 @@ class Product {
         available: json["available"],
         name: json["name"],
         picture: json["picture"],
-        price: json["price"].toDouble(),
+        price: json["price"],
       );
 
   Map<String, dynamic> toMap() => {
