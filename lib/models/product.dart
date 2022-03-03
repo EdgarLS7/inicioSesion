@@ -11,6 +11,7 @@ class Product {
     required this.name,
     this.picture,
     required this.price,
+    this.id
   });
 
   bool available;
@@ -28,12 +29,21 @@ class Product {
         name: json["name"],
         picture: json["picture"],
         price: json["price"],
-      );
+  );
 
   Map<String, dynamic> toMap() => {
         "available": available,
         "name": name,
         "picture": picture,
         "price": price,
-      };
+  };
+
+  Product copy() => Product(
+    available: available, 
+    name: name,
+    picture: picture, 
+    price: price,
+    id: id,
+  ); 
+
 }

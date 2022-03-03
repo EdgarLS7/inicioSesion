@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Productimage extends StatelessWidget {
-  const Productimage({Key? key}) : super(key: key);
+
+  final String? url;
+
+  const Productimage({
+    Key? key, 
+    this.url
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +17,16 @@ class Productimage extends StatelessWidget {
         decoration: _buildBoxdDecoration(),
         width: double.infinity,
         height: 450,
-        child: const ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
-          child: FadeInImage(
-            image: NetworkImage('https://via.placeholder.com/400x300/green'),
-            placeholder: AssetImage('assets/jar-loading.gif'),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+          child: url == null
+            ? const Image(image: AssetImage('assets/no-image.png'),
             fit: BoxFit.cover,
+          )
+          : FadeInImage(
+              image: NetworkImage( url! ),
+              placeholder: const AssetImage('assets/jar-loading.gif'),
+              fit: BoxFit.cover,
           ),
         ),
       )
