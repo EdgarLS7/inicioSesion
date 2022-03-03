@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
 
     final productsService = Provider.of<ProductsService>(context);
 
-    if (productsService.isLoading) return LoadingScreen();
+    if (productsService.isLoading) return const LoadingScreen();
 
     return Scaffold(
       appBar: AppBar(

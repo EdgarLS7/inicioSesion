@@ -105,8 +105,9 @@ class _ProductForm extends StatelessWidget {
                 initialValue: product.name,
                 onChanged: ( value ) => product.name = value,
                 validator: ( value ) {
-                  if ( value == null || value.length < 1 )
-                  return 'El nombre es obligatorio';
+                  if ( value == null || value.isEmpty ) {
+                    return 'El nombre es obligatorio';
+                  }
                 },
                 decoration: Inputdecorations.authInputDecoration(
                   hintText : 'Nombre del producto', 
