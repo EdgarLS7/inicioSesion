@@ -15,8 +15,12 @@ class ProductsService extends ChangeNotifier {
     loadProducts();
   }
   
-  //<List<Product>>
-  Future loadProducts() async {
+  //
+  Future<List<Product>> loadProducts() async {
+
+    isLoading = true;
+    notifyListeners();
+
     //Disparar la peticion
     final url = Uri.https( _baseUrl, 'products.json');
     final respuesta = await http.get( url );
@@ -30,7 +34,9 @@ class ProductsService extends ChangeNotifier {
 
     });
 
-    print(this.products[0].name);
+    isLoading = false;
+    notifyListeners();
+    return products;
     
   }
 }
