@@ -1,7 +1,23 @@
 import 'package:flt_login/screens/screens.dart';
+import 'package:flt_login/services/products_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const AppState());
+
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: ( _ ) => ProductsService())
+      ],
+      child: const MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -13,9 +29,9 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: '/home',
       routes: {
-        '/login'  : ( _ ) => LoginScreen(),
+        '/login'  : ( _ ) => const LoginScreen(),
         '/home'   : ( _ ) => const HomeScreen(),
-        '/product': ( _ ) => ProductScrenn()
+        '/product': ( _ ) => const ProductScrenn()
 
       },
       theme: ThemeData.light().copyWith(

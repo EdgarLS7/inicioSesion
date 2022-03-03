@@ -6,12 +6,12 @@ class Productimage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only( left: 10, right: 10, top: 10),
+      padding: const EdgeInsets.only( left: 10, right: 10, top: 10),
       child: Container(
-        decoration: _BuildBoxdDecoration(),
+        decoration: _buildBoxdDecoration(),
         width: double.infinity,
         height: 450,
-        child: ClipRRect(
+        child: const ClipRRect(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
           child: FadeInImage(
             image: NetworkImage('https://via.placeholder.com/400x300/green'),
@@ -23,14 +23,14 @@ class Productimage extends StatelessWidget {
     );
   }
 
-  BoxDecoration _BuildBoxdDecoration() => BoxDecoration(
+  BoxDecoration _buildBoxdDecoration() => BoxDecoration(
     color: Colors.red,
-    borderRadius: BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+    borderRadius: const BorderRadius.only(topLeft: Radius.circular(35), topRight: Radius.circular(35)),
     boxShadow: [
       BoxShadow(
         color: Colors.black.withOpacity(0.00),
         blurRadius: 10,
-        offset: Offset(0,5)
+        offset: const Offset(0,5)
       )
     ]
   );

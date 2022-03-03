@@ -4,6 +4,8 @@ import 'package:flt_login/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProductScrenn extends StatelessWidget {
+  const ProductScrenn({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +15,14 @@ class ProductScrenn extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Productimage(),
+                const Productimage(),
 
                 Positioned(
                   top: 50,
                   left: 20,
                   child: IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: Icon(Icons.arrow_back_ios_new, size: 30,),
+                    icon: const Icon(Icons.arrow_back_ios_new, size: 30,),
                   )
                 ),
                 Positioned(
@@ -30,22 +32,22 @@ class ProductScrenn extends StatelessWidget {
                     onPressed: () {
                       //TODO Camara o Galeria
                     },
-                    icon: Icon(Icons.camera_alt_outlined, size: 30,),
+                    icon: const Icon(Icons.camera_alt_outlined, size: 30,),
                   )
                 ),
               ],
             ),
 
-            _ProductForm(),
+            const _ProductForm(),
 
-            SizedBox( height: 100,),
+            const SizedBox( height: 100,),
           ],
         ),
       ),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon (Icons.save_outlined),
+        child: const Icon (Icons.save_outlined),
         onPressed: () {
 
         },
@@ -63,17 +65,17 @@ class _ProductForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         width: double.infinity,
         height: 300,
-        decoration: _BuildBoxDecoration(),
+        decoration: _buildBoxDecoration(),
         child: Form(
           child: Column(
             children: [
 
-              SizedBox( height: 10,),
+              const SizedBox( height: 10,),
 
               TextFormField(
                 decoration: Inputdecorations.authInputDecoration(
@@ -81,7 +83,7 @@ class _ProductForm extends StatelessWidget {
                   labelText: 'Nombre:'),
               ),
 
-               SizedBox( height: 30,),
+              const SizedBox( height: 30,),
 
               TextFormField(
                 keyboardType: TextInputType.number,
@@ -90,10 +92,10 @@ class _ProductForm extends StatelessWidget {
                   labelText: 'Precio:'),
               ),
               
-              SizedBox( height: 30,),
+              const SizedBox( height: 30,),
 
               SwitchListTile.adaptive(
-                title: Text('Disponible'),
+                title: const Text('Disponible'),
                 activeColor: Colors.indigo,
                 value: true, 
                 onChanged: ( value ) {
@@ -107,13 +109,13 @@ class _ProductForm extends StatelessWidget {
     );
   }
 
-  BoxDecoration _BuildBoxDecoration() => BoxDecoration(
+  BoxDecoration _buildBoxDecoration() => BoxDecoration(
     color: Colors.white,
-    borderRadius: BorderRadius.only( bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+    borderRadius: const BorderRadius.only( bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
     boxShadow: [
       BoxShadow(
         color: Colors.black.withOpacity(0.05),
-        offset: Offset(0,5),
+        offset: const Offset(0,5),
         blurRadius: 5
       )
     ]
