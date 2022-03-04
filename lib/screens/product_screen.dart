@@ -1,4 +1,4 @@
-
+import 'package:image_picker/image_picker.dart';
 import 'package:flt_login/providers/product_form_providers.dart';
 import 'package:flt_login/services/services.dart';
 import 'package:flt_login/ui/input_decorations.dart';
@@ -57,8 +57,21 @@ class _ProductScreenBody extends StatelessWidget {
                   top: 50,
                   right: 20,
                   child: IconButton(
-                    onPressed: () {
-                      //TODO Camara o Galeria
+                    onPressed: () async {
+                      
+                      final picker = new ImagePicker();
+                      final XFile? pickedFile = await picker.pickImage(
+                        source: ImageSource.camera,
+                        imageQuality: 100
+                      );
+
+                      if( pickedFile == null ) {
+                        print('No selecciono nada');
+                        return;
+                      }
+
+                      print('tenemos imagen ${pickedFile.path}');
+
                     },
                     icon: const Icon(Icons.camera_alt_outlined, size: 30, color: Colors.white),
                   )
